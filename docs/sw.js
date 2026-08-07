@@ -1,4 +1,0 @@
-const CACHE='kojisho-v1';const SHELL=['./index.html','./styles.css','./data.js','./app.js','./manifest.webmanifest','./icon.svg'];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)))});
-self.addEventListener('activate',e=>e.waitUntil(Promise.all([caches.keys().then(xs=>Promise.all(xs.filter(x=>x!==CACHE).map(x=>caches.delete(x)))),self.clients.claim()])));
-self.addEventListener('fetch',e=>{if(e.request.url.includes('/api/iiif/'))return;if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put('./index.html',copy));return r}).catch(()=>caches.match('./index.html')));return}e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(x=>{const y=x.clone();caches.open(CACHE).then(c=>c.put(e.request,y));return x})))})
