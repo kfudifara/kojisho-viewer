@@ -1,5 +1,5 @@
-const CACHE = 'kojisho-iiif-v15';
-const SHELL = ['./', './index.html', './styles.css?v=15', './app.js?v=15', './data-v3.js', './manifest.webmanifest', './icon.svg'];
+const CACHE = 'kojisho-iiif-v16';
+const SHELL = ['./', './index.html', './styles.css?v=16', './app.js?v=16', './data-v3.js', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
   self.skipWaiting();
