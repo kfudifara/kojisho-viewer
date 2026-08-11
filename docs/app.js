@@ -4,7 +4,7 @@ const ui={dictionary:$('#dictionary'),volume:$('#volume'),bottomDictionary:$('#b
 const rows=Array.isArray(window.KOJISHO_DATA)?window.KOJISHO_DATA:[];
 const dictionaryOrder=['天治本新撰字鏡','寛政版本草和名','高山寺本和名類聚抄','元和版和名類聚抄','箋注和名類聚抄','図書寮本類聚名義抄','観智院本類聚名義抄','前田本色葉字類抄','黒川本色葉字類抄'];
 let current=[],activeRow=null,currentPid='',currentFrame=1,maxFrame=Infinity,lastGood=null;
-const viewer=OpenSeadragon({id:'viewer',showNavigationControl:false,animationTime:.35,blendTime:.15,maxZoomPixelRatio:4,visibilityRatio:.5,constrainDuringPan:true,gestureSettingsMouse:{clickToZoom:false,dblClickToZoom:false,scrollToZoom:true},gestureSettingsTouch:{pinchToZoom:true,pinchRotate:true,clickToZoom:false,dblClickToZoom:false}});
+const viewer=OpenSeadragon({id:'viewer',showNavigationControl:false,animationTime:.35,blendTime:.15,maxZoomPixelRatio:4,visibilityRatio:.5,constrainDuringPan:true,gestureSettingsMouse:{clickToZoom:false,dblClickToZoom:false,scrollToZoom:true},gestureSettingsTouch:{pinchToZoom:true,pinchRotate:false,clickToZoom:false,dblClickToZoom:false}});
 const unique=a=>[...new Set(a)];
 const natural=(a,b)=>String(a).localeCompare(String(b),'ja',{numeric:true});
 const key=r=>[r['辞書名'],r['巻'],r['頁'],r['面']].join('|');
@@ -33,6 +33,7 @@ function moveFrame(delta){const target=currentFrame+delta;if(target<1||target>ma
 function openSidebar(){ui.sidebar.classList.add('open');ui.scrim.classList.add('open')}
 function closeSidebar(){ui.sidebar.classList.remove('open');ui.scrim.classList.remove('open')}
 function closeVolumeMenu(){ui.bottomVolumeMenu.hidden=true;ui.bottomVolume.setAttribute('aria-expanded','false')}
+function applyTheme(theme){document.documentElement.dataset.theme=theme;const toggle=$('#themeToggle'),dark=theme==='dark';toggle.textContent=dark?'☀':'☾';toggle.setAttribute('aria-label',dark?'ライトモードに切り替える':'ダークモードに切り替える');document.querySelector('meta[name="theme-color"]').content=dark?'#17140f':'#f3efe5'}
 
 viewer.addHandler('open',()=>{viewer.viewport.goHome(true);ui.notice.hidden=true;lastGood={pid:currentPid,number:currentFrame}});
 viewer.addHandler('open-failed',()=>{ui.notice.hidden=false;ui.notice.textContent='このコマの画像を表示できない';if(!Number.isFinite(maxFrame)&&lastGood&&currentFrame>lastGood.number){maxFrame=lastGood.number;currentFrame=lastGood.number;updateMoveButtons()}});
@@ -41,5 +42,6 @@ ui.dictionary.onchange=()=>selectDictionary(ui.dictionary.value,true);ui.bottomD
 $('#pageSearch').oninput=e=>buildToc(e.target.value.trim());ui.previous.onclick=()=>moveFrame(-1);ui.next.onclick=()=>moveFrame(1);
 $('#zoomIn').onclick=()=>viewer.viewport.zoomBy(1.3);$('#zoomOut').onclick=()=>viewer.viewport.zoomBy(1/1.3);$('#home').onclick=()=>viewer.viewport.goHome();$('#rotateLeft').onclick=()=>viewer.viewport.setRotation(viewer.viewport.getRotation()-90);$('#rotateRight').onclick=()=>viewer.viewport.setRotation(viewer.viewport.getRotation()+90);$('#fullscreen').onclick=()=>viewer.setFullScreen(!viewer.isFullPage());
 $('#menu').onclick=openSidebar;$('#close').onclick=closeSidebar;ui.scrim.onclick=closeSidebar;document.addEventListener('click',closeVolumeMenu);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeVolumeMenu();if(e.key==='ArrowLeft')moveFrame(1);if(e.key==='ArrowRight')moveFrame(-1)});
+const savedTheme=localStorage.getItem('kojisho.theme'),systemTheme=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';applyTheme(savedTheme||systemTheme);$('#themeToggle').onclick=()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';localStorage.setItem('kojisho.theme',next);applyTheme(next)};
 if(rows.length){const savedDictionary=localStorage.getItem('kojisho.dictionary');selectDictionary(savedDictionary||'観智院本類聚名義抄',!savedDictionary)}else ui.notice.textContent='古辞書データを読み込めない';
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));

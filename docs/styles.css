@@ -1,4 +1,5 @@
 :root{color-scheme:dark;--bg:#0d0c0a;--panel:#1d1a15;--panel2:#29241c;--line:#443a2d;--ink:#f4ecdd;--muted:#aaa092;--gold:#d6aa55;--top:58px}
+:root[data-theme=light]{color-scheme:light;--bg:#eee9df;--panel:#faf7f0;--panel2:#eee8dc;--line:#c9bdab;--ink:#29231b;--muted:#70675b;--gold:#8b611d}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic UI",sans-serif}
 button,select,input{font:inherit;color:inherit}button,a{cursor:pointer}
@@ -29,5 +30,6 @@ select,input{height:42px;border:1px solid var(--line);border-radius:8px;backgrou
 #faces button:disabled{cursor:default;color:#746c61;background:#211e19}#faces button.active{background:var(--gold);color:#18130b;font-weight:bold}
 .tools{display:flex;justify-content:center;gap:6px;padding:5px 10px calc(5px + env(safe-area-inset-bottom));background:#15130f}.tools button{min-width:44px;border:0;border-radius:8px;background:var(--panel2)}.tools i{width:1px;background:var(--line);margin:5px}
 #scrim{display:none}
+:root[data-theme=light] header{background:#f3efe5}:root[data-theme=light] #viewer{background:radial-gradient(circle,#eee8dc,#d9d0c2 70%)}:root[data-theme=light] #notice{background:#faf7f0e8}:root[data-theme=light] .tools{background:#e5ded2}:root[data-theme=light] #faces button:disabled{color:#a2998d;background:#e5ded4}:root[data-theme=light] .dropup-menu{box-shadow:0 -10px 28px #71645140}
 @media(min-width:769px){#menu,#close{display:none}}
 @media(max-width:768px){aside{position:fixed;top:calc(var(--top) + env(safe-area-inset-top));bottom:0;left:0;width:min(86vw,330px);transform:translateX(-102%);transition:.2s;box-shadow:12px 0 30px #000b}aside.open{transform:none}#scrim.open{display:block;position:fixed;z-index:14;inset:calc(var(--top) + env(safe-area-inset-top)) 0 0;background:#0008}.brand strong{font-size:17px}header{gap:7px}header p{max-width:43vw;font-size:12px}.pager{gap:5px}.pager>button{width:48px}.location-controls{grid-template-columns:minmax(95px,1.8fr) minmax(50px,.7fr) minmax(50px,.7fr) auto;gap:4px}.location-controls select,.dropup>button{padding:0 5px;font-size:12px}}

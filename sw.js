@@ -1,4 +1,4 @@
-const CACHE = 'kojisho-iiif-v11';
+const CACHE = 'kojisho-iiif-v12';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './data-v3.js', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', event => {
