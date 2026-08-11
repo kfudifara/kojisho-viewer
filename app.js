@@ -32,7 +32,7 @@ function moveFrame(delta){const target=currentFrame+delta;if(target<1||target>ma
 function openSidebar(){ui.sidebar.classList.add('open');ui.scrim.classList.add('open');$('#menu').setAttribute('aria-expanded','true');$('#menu').setAttribute('aria-label','目次を閉じる')}
 function closeSidebar(){ui.sidebar.classList.remove('open');ui.scrim.classList.remove('open');$('#menu').setAttribute('aria-expanded','false');$('#menu').setAttribute('aria-label','目次を開く')}
 function toggleSidebar(){ui.sidebar.classList.contains('open')?closeSidebar():openSidebar()}
-function applyTheme(theme){document.documentElement.dataset.theme=theme;const toggle=$('#themeToggle'),dark=theme==='dark';toggle.textContent=dark?'☀':'☾';toggle.setAttribute('aria-label',dark?'ライトモードに切り替える':'ダークモードに切り替える');document.querySelector('meta[name="theme-color"]').content=dark?'#17140f':'#f3efe5'}
+function applyTheme(theme){document.documentElement.dataset.theme=theme;const toggle=$('#themeToggle'),dark=theme==='dark',color=dark?'#17140f':'#f3efe5',old=$('#themeColor'),meta=old.cloneNode();meta.content=color;old.replaceWith(meta);document.documentElement.style.backgroundColor=color;toggle.textContent=dark?'☀':'☾';toggle.setAttribute('aria-label',dark?'ライトモードに切り替える':'ダークモードに切り替える')}
 
 viewer.addHandler('open',()=>{viewer.viewport.goHome(true);ui.notice.hidden=true;lastGood={pid:currentPid,number:currentFrame}});
 viewer.addHandler('open-failed',()=>{ui.notice.hidden=false;ui.notice.textContent='このコマの画像を表示できない';if(!Number.isFinite(maxFrame)&&lastGood&&currentFrame>lastGood.number){maxFrame=lastGood.number;currentFrame=lastGood.number;updateMoveButtons()}});
