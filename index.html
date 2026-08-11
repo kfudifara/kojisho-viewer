@@ -8,7 +8,7 @@
     (() => {
       let saved;
       try { saved = localStorage.getItem('kojisho.theme'); } catch (_) {}
-      const theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      const theme = saved || 'dark';
       document.documentElement.dataset.theme = theme;
       document.getElementById('themeColor').content = theme === 'light' ? '#f3efe5' : '#17140f';
     })();
@@ -16,7 +16,7 @@
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
 </head>
 <body>
   <header>
@@ -60,6 +60,6 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=25"></script>
+  <script src="app.js?v=26"></script>
 </body>
 </html>

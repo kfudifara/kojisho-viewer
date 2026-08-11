@@ -12,7 +12,13 @@ python -m http.server 8000
 
 ## データ形式
 
-CSVの列は `URL,辞書名,巻,頁,面` とする。現在はブラウザーで確実に利用できるよう、CSVから生成済みの `data-v3.js` を読み込む。CSVを更新した場合は同ファイルも再生成する必要がある。
+CSVの列は `URL,辞書名,巻,頁,面` とする。GitHub Pagesへの公開時に、`古辞書.csv`から`data-v3.js`を自動生成する。CSVを更新してGitHubへプッシュすれば、追加・修正したデータが公開版へ反映される。
+
+ローカル用の`data-v3.js`を更新する場合は、次を実行する。
+
+```powershell
+node scripts/generate-data.mjs 古辞書.csv data-v3.js
+```
 
 NDLの `https://dl.ndl.go.jp/info:ndljp/pid/{PID}/{コマ}` を、`https://www.dl.ndl.go.jp/api/iiif/{PID}/R{7桁のコマ}/info.json` に変換して表示する。
 
@@ -23,7 +29,7 @@ NDLの `https://dl.ndl.go.jp/info:ndljp/pid/{PID}/{コマ}` を、`https://www.d
 
 本アプリは画像ファイルを再配布せず、国立国会図書館が公開する IIIF API から取得して表示する。各資料の利用にあたっては、国立国会図書館デジタルコレクションに表示される公開範囲と利用条件を確認すること。
 
-GitHub Pagesでは、ワークフローがルートの実行用ファイルだけを一時ディレクトリへまとめて公開する。
+GitHub Pagesでは、ワークフローがCSVを変換し、実行用ファイルだけを一時ディレクトリへまとめて公開する。
 
 ## ライセンス
 
