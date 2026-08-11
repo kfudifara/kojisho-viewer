@@ -1,5 +1,5 @@
-const CACHE = 'kojisho-iiif-v22';
-const SHELL = ['./', './index.html', './styles.css?v=22', './app.js?v=22', './data-v3.js', './manifest.webmanifest', './icon.svg?v=20'];
+const CACHE = 'kojisho-iiif-v23';
+const SHELL = ['./index.html', './styles.css?v=23', './app.js?v=23', './data-v3.js', './manifest.webmanifest', './icon.svg?v=20'];
 
 self.addEventListener('install', event => {
   self.skipWaiting();
@@ -11,5 +11,13 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (url.hostname.endsWith('ndl.go.jp') || url.hostname === 'cdn.jsdelivr.net') return;
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then(response => {
+      const copy = response.clone();
+      caches.open(CACHE).then(cache => cache.put('./index.html', copy));
+      return response;
+    }).catch(() => caches.match('./index.html')));
+    return;
+  }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });
