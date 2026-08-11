@@ -2,6 +2,8 @@
 
 `古辞書.csv` をもとに、国立国会図書館デジタルコレクションの画像を IIIF Image API と OpenSeadragon で閲覧する静的 Web アプリである。
 
+本アプリは個人が制作したものであり、国立国会図書館の公式サービスではない。
+
 ## ローカル実行
 
 ```powershell
@@ -35,4 +37,4 @@ GitHub Pagesでは、ワークフローがCSVを変換し、実行用ファイ�
 
 本プロジェクトのコードと自作データは [MIT License](LICENSE) で公開する。
 
-画像ビューワーには [OpenSeadragon](https://openseadragon.github.io/) を使用している。OpenSeadragon は New BSD License で提供されている。
+画像ビューワーには [OpenSeadragon](https://openseadragon.github.io/) を使用している。OpenSeadragon はNew BSD Licenseで提供されている。著作権表示とライセンス条件は [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) に記載する。

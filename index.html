@@ -16,7 +16,7 @@
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=26">
+  <link rel="stylesheet" href="styles.css?v=27">
 </head>
 <body>
   <header>
@@ -24,7 +24,10 @@
     <div class="brand"><strong>古辞書ビューワー</strong></div>
     <p id="position" aria-live="polite"></p>
     <button id="themeToggle" class="icon" aria-label="ライトモードに切り替える" title="表示モードを切り替える">☀</button>
-    <a id="source" class="icon" target="_blank" rel="noopener" aria-label="国立国会図書館で開く">↗</a>
+    <a id="source" class="source-credit" target="_blank" rel="noopener" aria-label="出典：国立国会図書館デジタルコレクション">
+      <span class="source-full">出典：国立国会図書館デジタルコレクション</span>
+      <span class="source-short">出典：NDL</span><span aria-hidden="true">↗</span>
+    </a>
   </header>
   <main>
     <aside id="sidebar">
@@ -60,6 +63,6 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=26"></script>
+  <script src="app.js?v=27"></script>
 </body>
 </html>
