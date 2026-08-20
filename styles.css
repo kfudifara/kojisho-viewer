@@ -15,8 +15,8 @@ aside{width:300px;flex:none;display:flex;flex-direction:column;background:var(--
 .sidebar-toggle{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--muted)}.sidebar-toggle svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.sidebar-toggle:hover{border-color:var(--gold);color:var(--gold)}#collapseSidebar{margin-left:auto}
 aside label{display:grid;gap:6px;margin:12px 14px 0;color:var(--muted);font-size:11px}
 select,input{height:42px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);padding:0 12px}
-.location-search{margin:12px 14px 0}.location-search>label{display:block;margin:0 0 6px}.location-search input{min-width:0;width:100%}.location-search input::placeholder{font-size:12px}#locationError{min-height:1.3em;margin:4px 0 0;color:#e4a28f;font-size:11px}
-#toc{min-height:0;padding:14px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;overflow:auto}
+.location-search{margin:12px 14px 0}.location-search>label{display:block;margin:0 0 6px}.location-search input{min-width:0;width:100%}#locationError{min-height:1.3em;margin:4px 0 0;color:#e4a28f;font-size:11px}.toc-label{margin:12px 14px 0;color:var(--muted);font-size:11px}
+#toc{min-height:0;padding:6px 14px 14px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;overflow:auto}
 #toc button{min-width:0;height:36px;border:1px solid var(--line);border-radius:7px;background:var(--panel2)}
 #toc button.active{border-color:var(--gold);color:var(--gold);background:#352d1e}
 .workspace{position:relative;min-width:0;min-height:0;flex:1;display:grid;grid-template-rows:minmax(0,1fr) 68px;overflow:hidden}
