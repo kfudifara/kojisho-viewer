@@ -16,25 +16,23 @@
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=34">
+  <link rel="stylesheet" href="styles.css?v=35">
 </head>
 <body>
   <header>
-    <button id="menu" class="icon sidebar-icon" aria-label="目次を開く" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
-    <div class="brand"><strong>古辞書ビューワー</strong></div>
+    <button id="menu" class="icon sidebar-icon" aria-label="サイドバーを切り替える" aria-controls="sidebar" aria-expanded="true" title="サイドバーを切り替える"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
+    <button id="resetApp" class="brand" type="button" aria-label="初期位置に戻る" title="初期位置に戻る"><strong>古辞書ビューワー</strong></button>
     <p id="position" aria-live="polite"></p>
-    <button id="themeToggle" class="icon" aria-label="ライトモードに切り替える" title="表示モードを切り替える">☀</button>
-    <a id="source" class="source-credit" target="_blank" rel="noopener" aria-label="出典：国立国会図書館デジタルコレクション">
-      <span class="source-full">出典：国立国会図書館デジタルコレクション</span>
-      <span class="source-short">出典：NDL</span><span aria-hidden="true">↗</span>
+    <button id="themeToggle" class="icon theme-icon" aria-label="ライトモードに切り替える" title="表示モードを切り替える"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg></button>
+    <a id="source" class="source-credit" target="_blank" rel="noopener" aria-label="出典：NDLデジタルコレクション">
+      <span>出典：NDLデジタルコレクション</span><span aria-hidden="true">↗</span>
     </a>
   </header>
   <main>
     <aside id="sidebar">
-      <div class="aside-title"><strong>資料を選ぶ</strong><button id="collapseSidebar" class="sidebar-toggle" type="button" aria-label="資料選択を折りたたむ" title="資料選択を折りたたむ"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button></div>
       <label>辞書を選択<select id="dictionary"></select></label>
       <form id="locationSearch" class="location-search" role="search">
-        <label for="locationQuery">位置を入力して開く</label>
+        <label for="locationQuery">位置を入力</label>
         <input id="locationQuery" type="search" autocomplete="off" placeholder="例：1-1オ／上1オ">
         <p id="locationError" role="alert" aria-live="polite"></p>
       </form>
@@ -45,12 +43,11 @@
     <div id="scrim"></div>
     <section class="workspace">
       <div id="viewer" aria-label="IIIF画像ビューワー">
-        <button id="expandSidebar" class="sidebar-toggle expand-sidebar" type="button" aria-label="資料選択を表示" title="資料選択を表示"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
         <span class="edge-hint edge-next" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></span>
         <span class="edge-hint edge-previous" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
         <div class="tools">
           <button id="zoomOut" aria-label="縮小">−</button>
-          <button id="home" aria-label="全体表示"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M8 8h8v8H8z"/></svg></button>
+          <button id="home" aria-label="全体表示"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M8 8h8v8H8z" fill="currentColor" stroke="none"/></svg></button>
           <button id="zoomIn" aria-label="拡大">＋</button>
           <button id="fullscreen" aria-label="全画面"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/></svg></button>
         </div>
@@ -61,11 +58,10 @@
         <div class="location-controls">
           <select id="bottomDictionary" aria-label="辞書名"></select>
           <select id="bottomVolume" aria-label="巻"></select>
-          <input id="page" type="text" inputmode="numeric" autocomplete="off" list="pageOptions" aria-label="頁">
-          <datalist id="pageOptions"></datalist>
+          <select id="page" aria-label="頁"></select>
           <div id="faces" aria-label="面"></div>
           <form id="bottomLocationSearch" class="bottom-location-search" role="search">
-            <input id="bottomLocationQuery" type="search" autocomplete="off" aria-label="位置を入力して開く" placeholder="例：1-1オ／上1オ">
+            <input id="bottomLocationQuery" type="search" autocomplete="off" aria-label="位置を入力" placeholder="例：1-1オ">
           </form>
         </div>
       </nav>
@@ -73,6 +69,6 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=34"></script>
+  <script src="app.js?v=35"></script>
 </body>
 </html>
