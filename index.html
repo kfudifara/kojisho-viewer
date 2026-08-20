@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta id="themeColor" name="theme-color" content="#17140f">
+  <meta id="themeColor" name="theme-color" content="#212121">
   <script>
     (() => {
       let saved;
       try { saved = localStorage.getItem('kojisho.theme'); } catch (_) {}
       const theme = saved || 'dark';
       document.documentElement.dataset.theme = theme;
-      document.getElementById('themeColor').content = theme === 'light' ? '#f3efe5' : '#17140f';
+      document.getElementById('themeColor').content = theme === 'light' ? '#ffffff' : '#212121';
     })();
   </script>
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=32">
+  <link rel="stylesheet" href="styles.css?v=33">
 </head>
 <body>
   <header>
-    <button id="menu" class="icon" aria-label="目次を開く" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <button id="menu" class="icon sidebar-icon" aria-label="目次を開く" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
     <div class="brand"><strong>古辞書ビューワー</strong></div>
     <p id="position" aria-live="polite"></p>
     <button id="themeToggle" class="icon" aria-label="ライトモードに切り替える" title="表示モードを切り替える">☀</button>
@@ -31,7 +31,7 @@
   </header>
   <main>
     <aside id="sidebar">
-      <div class="aside-title"><strong>資料を選ぶ</strong><button id="collapseSidebar" class="sidebar-toggle" type="button" aria-label="資料選択を折りたたむ" title="資料選択を折りたたむ"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M7 9l-3 3 3 3"/></svg></button></div>
+      <div class="aside-title"><strong>資料を選ぶ</strong><button id="collapseSidebar" class="sidebar-toggle" type="button" aria-label="資料選択を折りたたむ" title="資料選択を折りたたむ"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button></div>
       <label>辞書を選択<select id="dictionary"></select></label>
       <form id="locationSearch" class="location-search" role="search">
         <label for="locationQuery">所在を入力して開く</label>
@@ -45,14 +45,14 @@
     <div id="scrim"></div>
     <section class="workspace">
       <div id="viewer" aria-label="IIIF画像ビューワー">
-        <button id="expandSidebar" class="sidebar-toggle expand-sidebar" type="button" aria-label="資料選択を表示" title="資料選択を表示"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M5 9l3 3-3 3"/></svg></button>
+        <button id="expandSidebar" class="sidebar-toggle expand-sidebar" type="button" aria-label="資料選択を表示" title="資料選択を表示"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
         <span class="edge-hint edge-next" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></span>
         <span class="edge-hint edge-previous" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></span>
         <div class="tools">
           <button id="zoomOut" aria-label="縮小">−</button>
           <button id="home" aria-label="全体表示">▣</button>
           <button id="zoomIn" aria-label="拡大">＋</button>
-          <button id="fullscreen" aria-label="全画面">⛶</button>
+          <button id="fullscreen" aria-label="全画面"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/></svg></button>
         </div>
         <button id="exitFullscreen" type="button" aria-label="全画面を終了">× <span>全画面を終了</span></button>
       </div>
@@ -63,12 +63,15 @@
           <select id="bottomVolume" aria-label="巻"></select>
           <select id="page" aria-label="頁"></select>
           <div id="faces" aria-label="面"></div>
+          <form id="bottomLocationSearch" class="bottom-location-search" role="search">
+            <input id="bottomLocationQuery" type="search" autocomplete="off" aria-label="所在を入力して開く" placeholder="例：1-1オ／上1オ">
+          </form>
         </div>
       </nav>
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=32"></script>
+  <script src="app.js?v=33"></script>
 </body>
 </html>
