@@ -16,7 +16,7 @@
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=38">
+  <link rel="stylesheet" href="styles.css?v=39">
 </head>
 <body>
   <header>
@@ -61,15 +61,19 @@
         <div id="mobileLocationPanel" class="mobile-location-panel">
           <div class="mobile-location-heading"><span>位置を選択</span><button id="mobileLocationClose" type="button" aria-label="位置選択を閉じる">×</button></div>
         <div class="location-controls">
-          <select id="bottomDictionary" aria-label="辞書名"></select>
-          <select id="bottomVolume" aria-label="巻"></select>
-          <select id="page" aria-label="頁"></select>
-          <div id="faces" aria-label="面"></div>
-          <div class="bottom-location-group">
-            <form id="bottomLocationSearch" class="bottom-location-search" role="search">
-              <input id="bottomLocationQuery" type="search" autocomplete="off" aria-label="位置を入力" placeholder="例：1-1オ">
-            </form>
-            <a id="source" class="external-link" target="_blank" rel="noopener" aria-label="国立国会図書館デジタルコレクション" title="国立国会図書館デジタルコレクション"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v6M19 5l-9 9M11 7H5v12h12v-6"/></svg></a>
+          <div class="location-primary-row">
+            <select id="bottomDictionary" aria-label="辞書名"></select>
+            <select id="bottomVolume" aria-label="巻"></select>
+          </div>
+          <div class="location-secondary-row">
+            <select id="page" aria-label="頁"></select>
+            <div id="faces" aria-label="面"></div>
+            <div class="bottom-location-group">
+              <form id="bottomLocationSearch" class="bottom-location-search" role="search">
+                <input id="bottomLocationQuery" type="search" autocomplete="off" aria-label="位置を入力" placeholder="例：1-1オ">
+              </form>
+              <a id="source" class="external-link" target="_blank" rel="noopener" aria-label="国立国会図書館デジタルコレクション" title="国立国会図書館デジタルコレクション"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v6M19 5l-9 9M11 7H5v12h12v-6"/></svg></a>
+            </div>
           </div>
         </div>
         </div>
@@ -78,6 +82,6 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=38"></script>
+  <script src="app.js?v=39"></script>
 </body>
 </html>
