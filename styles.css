@@ -25,3 +25,5 @@ select,input{height:var(--control-height);border:1px solid var(--line);border-ra
 @media(max-width:360px){.location-controls{grid-template-columns:128px 54px 48px 70px}}
 @media(display-mode:standalone) and (max-width:1024px){.tools{bottom:calc(8px + env(safe-area-inset-bottom))}}
 .location-controls{align-items:center}#faces{height:var(--control-height);border-radius:var(--control-radius)}
+aside{padding-top:var(--sidebar-padding)}aside>label{margin-top:var(--section-gap)}aside>label:first-child{margin-top:0}
+@media(max-width:768px){aside{padding-top:var(--sidebar-padding)}}
