@@ -16,13 +16,14 @@
   <title>古辞書ビューワー</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg?v=20">
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body>
   <header>
     <button id="menu" class="icon sidebar-icon" aria-label="サイドバーを切り替える" aria-controls="sidebar" aria-expanded="true" title="サイドバーを切り替える"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M9 4v16"/></svg></button>
     <button id="resetApp" class="brand" type="button" aria-label="初期位置に戻る" title="初期位置に戻る"><strong>古辞書ビューワー</strong></button>
     <p id="position" aria-live="polite"></p>
+    <p id="mobilePosition" aria-hidden="true"></p>
     <button id="themeToggle" class="icon theme-icon" aria-label="ライトモードに切り替える" title="表示モードを切り替える"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg></button>
   </header>
   <main>
@@ -52,6 +53,13 @@
       </div>
       <div id="notice">読み込み中</div>
       <nav class="pager">
+        <button id="mobileLocationToggle" class="mobile-location-toggle" type="button" aria-controls="mobileLocationPanel" aria-expanded="false">
+          <span id="mobileLocationSummary"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>
+        </button>
+        <button id="mobileLocationScrim" class="mobile-location-scrim" type="button" aria-label="位置選択を閉じる" tabindex="-1"></button>
+        <div id="mobileLocationPanel" class="mobile-location-panel">
+          <div class="mobile-location-heading"><span>位置を選択</span><button id="mobileLocationClose" type="button" aria-label="位置選択を閉じる">×</button></div>
         <div class="location-controls">
           <select id="bottomDictionary" aria-label="辞書名"></select>
           <select id="bottomVolume" aria-label="巻"></select>
@@ -64,11 +72,12 @@
             <a id="source" class="external-link" target="_blank" rel="noopener" aria-label="国立国会図書館デジタルコレクション" title="国立国会図書館デジタルコレクション"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h6v6M19 5l-9 9M11 7H5v12h12v-6"/></svg></a>
           </div>
         </div>
+        </div>
       </nav>
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=36"></script>
+  <script src="app.js?v=38"></script>
 </body>
 </html>
