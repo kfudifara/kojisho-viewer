@@ -12,6 +12,14 @@ python -m http.server 8000
 
 ブラウザーで `http://localhost:8000/` を開く。画像、OpenSeadragon本体、IIIFのタイル取得にはインターネット接続が必要である。
 
+## 個別コマのURL
+
+表示中のコマには `#/pid/{PID}/1/{コマ番号}` 形式のURLが自動的に付与される。たとえば、PID `2586891` の6コマ目は次のURLで直接開ける。
+
+`https://kfudifara.github.io/kojisho-viewer/#/pid/2586891/1/6`
+
+登録資料のCSVに所在が記載されていないコマも表示できる。PID自体が登録されていない場合は画像を開かず、その旨を画面に表示する。
+
 ## データ形式
 
 CSVの列は `URL,辞書名,巻,頁,面` とする。GitHub Pagesへの公開時に、`古辞書.csv`から`data-v3.js`を自動生成する。CSVを更新してGitHubへプッシュすれば、追加・修正したデータが公開版へ反映される。
