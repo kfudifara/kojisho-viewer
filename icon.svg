@@ -1,21 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
   <title id="title">古辞書ビューワー</title>
-  <rect width="512" height="512" rx="112" fill="#f2eee4"/>
-  <path d="M116 383h280v35c0 15-12 27-27 27H143c-15 0-27-12-27-27z" fill="#c8aa76"/>
-  <path d="M130 391h250M130 405h250M130 419h250" fill="none" stroke="#705f45" stroke-width="5" stroke-linecap="round" opacity=".72"/>
-  <rect x="100" y="68" width="312" height="342" rx="24" fill="#263743"/>
-  <rect x="126" y="94" width="211" height="290" rx="12" fill="#314753"/>
-  <rect x="158" y="122" width="66" height="234" rx="7" fill="#e5d7b8"/>
-  <rect x="169" y="133" width="44" height="212" rx="3" fill="none" stroke="#8c754e" stroke-width="5"/>
-  <path d="M354 70v337M390 83v312" fill="none" stroke="#15242d" stroke-width="10" stroke-linecap="round"/>
-  <g fill="none" stroke="#c69d5b" stroke-width="10" stroke-linecap="round">
+  <rect width="512" height="512" rx="112" fill="#f1f1ef"/>
+  <path d="M112 379h288v39c0 16-13 29-29 29H141c-16 0-29-13-29-29z" fill="#a3a3a0"/>
+  <path d="M130 394h252M130 411h252M130 428h252" fill="none" stroke="#555553" stroke-width="5" stroke-linecap="round"/>
+  <rect x="98" y="66" width="316" height="346" rx="25" fill="#202120"/>
+  <rect x="126" y="94" width="210" height="290" rx="12" fill="#30312f"/>
+  <rect x="158" y="122" width="68" height="234" rx="7" fill="#deded9"/>
+  <rect x="170" y="134" width="44" height="210" rx="3" fill="none" stroke="#777772" stroke-width="5"/>
+  <path d="M354 72v334M390 85v308" fill="none" stroke="#0f100f" stroke-width="10" stroke-linecap="round"/>
+  <g fill="none" stroke="#92928d" stroke-width="11" stroke-linecap="round">
     <path d="M349 112h48"/><path d="M349 184h48"/><path d="M349 256h48"/><path d="M349 328h48"/><path d="M349 382h48"/>
-  </g>
-  <g fill="#c69d5b">
-    <circle cx="354" cy="112" r="8"/><circle cx="390" cy="112" r="8"/>
-    <circle cx="354" cy="184" r="8"/><circle cx="390" cy="184" r="8"/>
-    <circle cx="354" cy="256" r="8"/><circle cx="390" cy="256" r="8"/>
-    <circle cx="354" cy="328" r="8"/><circle cx="390" cy="328" r="8"/>
-    <circle cx="354" cy="382" r="8"/><circle cx="390" cy="382" r="8"/>
   </g>
 </svg>
