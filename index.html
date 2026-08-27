@@ -17,7 +17,7 @@
   <link rel="manifest" href="manifest.webmanifest?v=45">
   <link rel="icon" type="image/svg+xml" href="icon.svg?v=45">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=45">
-  <link rel="stylesheet" href="styles.css?v=44">
+  <link rel="stylesheet" href="styles.css?v=45">
 </head>
 <body>
   <header>
@@ -30,7 +30,6 @@
   <main>
     <aside id="sidebar">
       <section class="current-location" aria-live="polite">
-        <span class="current-location-label">表示中</span>
         <span id="sidebarPositionHeading" class="position-heading"></span>
         <span id="sidebarPositionDetail" class="position-detail"></span>
       </section>
@@ -44,9 +43,8 @@
         </div>
       </div>
       <form id="locationSearch" class="location-search" role="search">
-        <div class="field-label"><label for="locationQuery">直接入力</label><button id="sidebarHelpToggle" class="help-button" type="button" aria-label="直接入力のヘルプ" aria-controls="sidebarInputHelp" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.4 2c-.9.5-1.2 1.1-1.2 2M12 17h.01"/></svg></button></div>
+        <div class="field-label"><label for="locationQuery">直接入力</label><button id="sidebarHelpToggle" class="help-button" type="button" aria-label="直接入力のヘルプ" aria-controls="inputHelpDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.4 2c-.9.5-1.2 1.1-1.2 2M12 17h.01"/></svg></button></div>
         <input id="locationQuery" type="search" autocomplete="off" placeholder="例：1-1オ／上1オ／1オ／1">
-        <div id="sidebarInputHelp" class="input-help" hidden></div>
         <p id="locationError" role="alert" aria-live="polite"></p>
       </form>
     </aside>
@@ -66,9 +64,8 @@
             </div>
           </div>
           <form id="bottomLocationSearch" class="popover-field" role="search">
-            <div class="field-label"><label for="bottomLocationQuery">直接入力</label><button id="popoverHelpToggle" class="help-button" type="button" aria-label="直接入力のヘルプ" aria-controls="popoverInputHelp" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.4 2c-.9.5-1.2 1.1-1.2 2M12 17h.01"/></svg></button></div>
+            <div class="field-label"><label for="bottomLocationQuery">直接入力</label><button id="popoverHelpToggle" class="help-button" type="button" aria-label="直接入力のヘルプ" aria-controls="inputHelpDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.4 2c-.9.5-1.2 1.1-1.2 2M12 17h.01"/></svg></button></div>
             <input id="bottomLocationQuery" type="search" autocomplete="off" placeholder="例：1-1オ／上1オ／1オ／1">
-            <div id="popoverInputHelp" class="input-help" hidden></div>
             <p id="bottomLocationError" role="alert" aria-live="polite"></p>
           </form>
         </div>
@@ -85,8 +82,32 @@
       <div id="notice">読み込み中</div>
     </section>
   </main>
+  <dialog id="inputHelpDialog" class="help-dialog" aria-labelledby="inputHelpTitle">
+    <div class="dialog-heading"><h2 id="inputHelpTitle">直接入力ヘルプ</h2><button id="inputHelpClose" class="dialog-close" type="button" aria-label="閉じる">×</button></div>
+    <div class="help-content">
+      <table class="input-example-table">
+        <colgroup><col><col><col></colgroup>
+        <thead><tr><th>入力例</th><th>巻</th><th>丁・頁</th></tr></thead>
+        <tbody>
+          <tr><td><code>1-1オ</code></td><td>巻1</td><td>1オ</td></tr>
+          <tr><td><code>上1オ</code></td><td>上</td><td>1オ</td></tr>
+          <tr><td><code>1オ</code></td><td>選択中の巻</td><td>1オ</td></tr>
+          <tr><td><code>1</code></td><td>選択中の巻</td><td>1オ</td></tr>
+        </tbody>
+      </table>
+      <p class="help-note">※現在選択中の辞書を対象にする。</p>
+      <h3>入力について</h3>
+      <ul>
+        <li>数字は全角・半角のどちらでも入力可能</li>
+        <li>オ／ウを省略した場合はオを開く</li>
+        <li>「<code>-</code>」と「<code>ー</code>」は同じ記号として扱う</li>
+        <li>「<code>お</code>」「<code>a</code>」は「オ」として扱う</li>
+        <li>「<code>う</code>」「<code>b</code>」は「ウ」として扱う</li>
+      </ul>
+    </div>
+  </dialog>
   <script src="https://cdn.jsdelivr.net/npm/openseadragon@6.0.2/build/openseadragon/openseadragon.min.js"></script>
   <script src="data-v3.js"></script>
-  <script src="app.js?v=45"></script>
+  <script src="app.js?v=46"></script>
 </body>
 </html>
