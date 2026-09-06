@@ -8,7 +8,7 @@
     (() => {
       let saved;
       try { saved = localStorage.getItem('kojisho.theme'); } catch (_) {}
-      const theme = saved || 'dark';
+      const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.dataset.theme = theme;
       document.getElementById('themeColor').content = theme === 'light' ? '#ffffff' : '#212121';
     })();
