@@ -26,8 +26,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir _site
-          cp index.html styles.css app.js manifest.webmanifest icon-192.png icon-512.png apple-touch-icon.png sw.js THIRD_PARTY_NOTICES.md _site/
-          node scripts/generate-data.mjs 古辞書.csv _site/data-v3.js
+          cp 古辞書ビューワー/index.html 古辞書ビューワー/styles.css 古辞書ビューワー/app.js 古辞書ビューワー/manifest.webmanifest 古辞書ビューワー/icon-192.png 古辞書ビューワー/icon-512.png 古辞書ビューワー/apple-touch-icon.png 古辞書ビューワー/sw.js 古辞書ビューワー/THIRD_PARTY_NOTICES.md 古辞書ビューワー/data-v3.js _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

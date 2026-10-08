@@ -1,3 +1,7 @@
 .DS_Store
 Thumbs.db
 
+# ローカル開発用データ・生成スクリプト（GitHubには公開しない）
+/古辞書.csv
+/古辞書.csv.bak
+/scripts/

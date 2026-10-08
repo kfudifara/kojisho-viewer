@@ -1,12 +1,13 @@
 # 古辞書ビューワー
 
-`古辞書.csv` をもとに、国立国会図書館デジタルコレクションの画像を IIIF Image API と OpenSeadragon で閲覧する静的 Web アプリである。
+国立国会図書館デジタルコレクションの画像を IIIF Image API と OpenSeadragon で閲覧する静的Webアプリである。
 
 本アプリは個人が制作したものであり、国立国会図書館の公式サービスではない。
 
 ## ローカル実行
 
 ```powershell
+cd 古辞書ビューワー
 python -m http.server 8000
 ```
 
@@ -20,14 +21,14 @@ python -m http.server 8000
 
 登録資料のCSVに所在が記載されていないコマも表示できる。PID自体が登録されていない場合は画像を開かず、その旨を画面に表示する。
 
-## データ形式
+## データ
 
-CSVの列は `URL,辞書名,巻,頁,面` とする。GitHub Pagesへの公開時に、`古辞書.csv`から`data-v3.js`を自動生成する。CSVを更新してGitHubへプッシュすれば、追加・修正したデータが公開版へ反映される。
+公開版は生成済みの `data-v3.js` を読み込む。元CSVと生成スクリプトはローカルの開発用ファイルであり、GitHubリポジトリには含めない。
 
-ローカル用の`data-v3.js`を更新する場合は、次を実行する。
+ローカルで元CSVを更新した後は、リポジトリの親階層で次を実行して `data-v3.js` を更新する。
 
 ```powershell
-node scripts/generate-data.mjs 古辞書.csv data-v3.js
+node scripts/generate-data.mjs
 ```
 
 NDLの `https://dl.ndl.go.jp/info:ndljp/pid/{PID}/{コマ}` を、`https://www.dl.ndl.go.jp/api/iiif/{PID}/R{7桁のコマ}/info.json` に変換して表示する。
@@ -35,11 +36,11 @@ NDLの `https://dl.ndl.go.jp/info:ndljp/pid/{PID}/{コマ}` を、`https://www.d
 ## 出典とデータ
 
 - 画像出典：国立国会図書館デジタルコレクション
-- 辞書位置データ：本プロジェクトで作成した `古辞書.csv`
+- 辞書位置データ：本プロジェクトで作成したデータ
 
 本アプリは画像ファイルを再配布せず、国立国会図書館が公開する IIIF API から取得して表示する。各資料の利用にあたっては、国立国会図書館デジタルコレクションに表示される公開範囲と利用条件を確認すること。
 
-GitHub Pagesでは、ワークフローがCSVを変換し、実行用ファイルだけを一時ディレクトリへまとめて公開する。
+GitHub Pagesでは、このフォルダにある実行用ファイルだけを公開する。
 
 ## ライセンス
 
